@@ -18,38 +18,47 @@ class _RootAppState extends State<RootApp> {
       bottomNavigationBar: getFooter(),
     );
   }
-  Widget getBody(){
+
+  Widget getBody() {
     return IndexedStack(
       index: pageIndex,
       children: <Widget>[
         HomePage(),
         Center(
-          child: Text("Discover",style: TextStyle(
-            color: black,
-            fontSize: 20,
-            fontWeight: FontWeight.bold
-          ),),
+            //Everything needed in the discover page
+
+            // child: IconButton(
+            //   icon: Icon(Icons.expand),
+            //   onPressed: () {
+            //     print('This is the discover page');
+            //   },
+            // ),
+            // child: Text(
+            //   "Discover",
+            //   style: TextStyle(
+            //       color: black, fontSize: 20, fontWeight: FontWeight.bold),
+            // ),
+            ),
+        Center(
+          child: Text(
+            "Upload",
+            style: TextStyle(
+                color: black, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         ),
         Center(
-          child: Text("Upload",style: TextStyle(
-            color: black,
-            fontSize: 20,
-            fontWeight: FontWeight.bold
-          ),),
+          child: Text(
+            "All Activity",
+            style: TextStyle(
+                color: black, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         ),
         Center(
-          child: Text("All Activity",style: TextStyle(
-            color: black,
-            fontSize: 20,
-            fontWeight: FontWeight.bold
-          ),),
-        ),
-        Center(
-          child: Text("Profile",style: TextStyle(
-            color: black,
-            fontSize: 20,
-            fontWeight: FontWeight.bold
-          ),),
+          child: Text(
+            "Profile",
+            style: TextStyle(
+                color: black, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
         )
       ],
     );
@@ -57,7 +66,8 @@ class _RootAppState extends State<RootApp> {
 
   Widget getFooter() {
     List bottomItems = [
-      {"icon":TikTokIcons.home, "label": "Home", "isIcon": true},
+      //Icons for the buttom
+      {"icon": TikTokIcons.home, "label": "Home", "isIcon": true},
       {"icon": TikTokIcons.search, "label": "Discover", "isIcon": true},
       {"icon": "", "label": "", "isIcon": false},
       {"icon": TikTokIcons.messages, "label": "Inbox", "isIcon": true},
@@ -68,51 +78,49 @@ class _RootAppState extends State<RootApp> {
       width: double.infinity,
       decoration: BoxDecoration(color: appBgColor),
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20,top: 10),
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(bottomItems.length,(index){
-            return bottomItems[index]['isIcon'] ? 
-            InkWell(
-              onTap: (){
-                selectedTab(index);
-              },
-                          child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Icon(
-                   bottomItems[index]['icon'],
-                    color: white ,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Center(
-                    child: Text(
-                      bottomItems[index]['label'],
-                      style: TextStyle(color: white, fontSize: 10),
+          children: List.generate(bottomItems.length, (index) {
+            return bottomItems[index]['isIcon']
+                ? InkWell(
+                    onTap: () {
+                      selectedTab(index);
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Icon(
+                          bottomItems[index]['icon'],
+                          color: white,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Center(
+                          child: Text(
+                            bottomItems[index]['label'],
+                            style: TextStyle(color: white, fontSize: 10),
+                          ),
+                        )
+                      ],
                     ),
                   )
-                ],
-              ),
-            ) : 
-            InkWell(
-              onTap: (){
-                selectedTab(index);
-              },
-              child: UploadIcon()
-              );
+                : InkWell(
+                    onTap: () {
+                      selectedTab(index);
+                    },
+                    child: UploadIcon());
           }),
         ),
       ),
     );
   }
-  selectedTab(index){
+
+  selectedTab(index) {
     setState(() {
       pageIndex = index;
     });
   }
 }
-
-

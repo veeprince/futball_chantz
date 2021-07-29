@@ -11,12 +11,18 @@ class HeaderHomePage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text(
-          "Following",
-          style: TextStyle(
-            color: white.withOpacity(0.7),
-            fontSize: 16,
+        ElevatedButton(
+          child: Text(
+            // should be something like homepage instead of following which shows matchweek?
+            "Match Week",
+            style: TextStyle(
+              color: white.withOpacity(0.7),
+              fontSize: 16,
+            ),
           ),
+          onPressed: () {
+            print('Following bar');
+          },
         ),
         SizedBox(
           width: 8,
@@ -32,6 +38,7 @@ class HeaderHomePage extends StatelessWidget {
           width: 8,
         ),
         Text(
+          //for you shows favorite team(maybe change the name to something else)
           "For You",
           style: TextStyle(
               color: white, fontSize: 17, fontWeight: FontWeight.w500),

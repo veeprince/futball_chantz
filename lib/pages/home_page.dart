@@ -101,14 +101,11 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
 
     _videoController = VideoPlayerController.asset(widget.videoUrl)
       ..initialize().then((value) {
-       _videoController.play();
+        _videoController.play();
         setState(() {
-          
           isShowPlaying = false;
         });
       });
-
-      
   }
 
   @override
@@ -116,11 +113,16 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
     // TODO: implement dispose
     super.dispose();
     _videoController.dispose();
-
-    
   }
-  Widget isPlaying(){
-    return _videoController.value.isPlaying && !isShowPlaying  ? Container() : Icon(Icons.play_arrow,size: 80,color: white.withOpacity(0.5),);
+
+  Widget isPlaying() {
+    return _videoController.value.isPlaying && !isShowPlaying
+        ? Container()
+        : Icon(
+            Icons.play_arrow,
+            size: 80,
+            color: white.withOpacity(0.5),
+          );
   }
 
   @override
@@ -149,8 +151,7 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
                       VideoPlayer(_videoController),
                       Center(
                         child: Container(
-                          decoration: BoxDecoration(
-                          ),
+                          decoration: BoxDecoration(),
                           child: isPlaying(),
                         ),
                       )
@@ -231,6 +232,7 @@ class RightPanel extends StatelessWidget {
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
+                //Controls the size of right side bar icons
                 getProfile(profileImg),
                 getIcons(TikTokIcons.heart, likes, 35.0),
                 getIcons(TikTokIcons.chat_bubble, comments, 35.0),
