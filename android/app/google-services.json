@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "718557591529",
+    "project_id": "chants-815bc",
+    "storage_bucket": "chants-815bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718557591529:android:58c5221bf9934e9255bd78",
+        "android_client_info": {
+          "package_name": "com.techgritty.chants"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718557591529-07vi438f2o0rdosmuud351uffqtmeb68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb6zzm1OhH5Z9cfkAnxxefvRP_gVN9MzU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "718557591529-07vi438f2o0rdosmuud351uffqtmeb68.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
