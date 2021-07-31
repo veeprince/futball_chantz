@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "718557591529-1uptk2rj104b63o8l8d21ck1ln7sa4jf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techgritty.chants",
+            "certificate_hash": "5f54bb569d4498dc902d643cc5a0809cbdcf9921"
+          }
+        },
+        {
           "client_id": "718557591529-07vi438f2o0rdosmuud351uffqtmeb68.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "718557591529-07vi438f2o0rdosmuud351uffqtmeb68.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "718557591529-f0d2di448sp32a4209lii7sikgtj8b9g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.techgritty.chants"
+              }
             }
           ]
         }
