@@ -33,10 +33,11 @@ class LeftPanel extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Text(
-            caption,
-            style: TextStyle(color: white),
-          ),
+          // Text(
+            
+          //   caption,
+          //   style: TextStyle(color: white, fontSize: 50),
+          // ),
           SizedBox(
             height: 5,
           ),

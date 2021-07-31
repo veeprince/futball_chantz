@@ -127,74 +127,76 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          _videoController.value.isPlaying
-              ? _videoController.pause()
-              : _videoController.play();
-        });
-      },
-      child: RotatedBox(
-        quarterTurns: -1,
-        child: Container(
-            height: widget.size.height,
-            width: widget.size.width,
-            child: Stack(
-              children: <Widget>[
-                Container(
-                  height: widget.size.height,
-                  width: widget.size.width,
-                  decoration: BoxDecoration(color: black),
-                  child: Stack(
-                    children: <Widget>[
-                      VideoPlayer(_videoController),
-                      Center(
-                        child: Container(
-                          decoration: BoxDecoration(),
-                          child: isPlaying(),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  height: widget.size.height,
-                  width: widget.size.width,
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(left: 15, top: 20, bottom: 10),
-                    child: SafeArea(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          HeaderHomePage(),
-                          Expanded(
-                              child: Row(
-                            children: <Widget>[
-                              LeftPanel(
-                                size: widget.size,
-                                name: "${widget.name}",
-                                caption: "${widget.caption}",
-                                songName: "${widget.songName}",
-                              ),
-                              RightPanel(
-                                size: widget.size,
-                                likes: "${widget.likes}",
-                                comments: "${widget.comments}",
-                                shares: "${widget.shares}",
-                                profileImg: "${widget.profileImg}",
-                                albumImg: "${widget.albumImg}",
-                              )
-                            ],
-                          ))
-                        ],
-                      ),
+    return Material(
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            _videoController.value.isPlaying
+                ? _videoController.pause()
+                : _videoController.play();
+          });
+        },
+        child: RotatedBox(
+          quarterTurns: -1,
+          child: Container(
+              height: widget.size.height,
+              width: widget.size.width,
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    height: widget.size.height,
+                    width: widget.size.width,
+                    decoration: BoxDecoration(color: black),
+                    child: Stack(
+                      children: <Widget>[
+                        VideoPlayer(_videoController),
+                        Center(
+                          child: Container(
+                            decoration: BoxDecoration(),
+                            child: isPlaying(),
+                          ),
+                        )
+                      ],
                     ),
                   ),
-                )
-              ],
-            )),
+                  Container(
+                    height: widget.size.height,
+                    width: widget.size.width,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(left: 15, top: 20, bottom: 10),
+                      child: SafeArea(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            HeaderHomePage(),
+                            Expanded(
+                                child: Row(
+                              children: <Widget>[
+                                LeftPanel(
+                                  size: widget.size,
+                                  name: "${widget.name}",
+                                  caption: "${widget.caption}",
+                                  songName: "${widget.songName}",
+                                ),
+                                RightPanel(
+                                  size: widget.size,
+                                  likes: "${widget.likes}",
+                                  comments: "${widget.comments}",
+                                  shares: "${widget.shares}",
+                                  profileImg: "${widget.profileImg}",
+                                  albumImg: "${widget.albumImg}",
+                                )
+                              ],
+                            ))
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              )),
+        ),
       ),
     );
   }
@@ -232,7 +234,6 @@ class RightPanel extends StatelessWidget {
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                //Controls the size of right side bar icons
                 getProfile(profileImg),
                 getIcons(TikTokIcons.heart, likes, 35.0),
                 getIcons(TikTokIcons.chat_bubble, comments, 35.0),

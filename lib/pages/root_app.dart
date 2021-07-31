@@ -25,20 +25,20 @@ class _RootAppState extends State<RootApp> {
       children: <Widget>[
         HomePage(),
         Center(
-            //Everything needed in the discover page
+          //Everything needed in the discover page
 
-            // child: IconButton(
-            //   icon: Icon(Icons.expand),
-            //   onPressed: () {
-            //     print('This is the discover page');
-            //   },
-            // ),
-            // child: Text(
-            //   "Discover",
-            //   style: TextStyle(
-            //       color: black, fontSize: 20, fontWeight: FontWeight.bold),
-            // ),
-            ),
+          // child: IconButton(
+          //   icon: Icon(Icons.expand),
+          //   onPressed: () {
+          //     print('This is the discover page');
+          //   },
+          // ),
+          child: Text(
+            "Discover",
+            style: TextStyle(
+                color: black, fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
         Center(
           child: Text(
             "Upload",
