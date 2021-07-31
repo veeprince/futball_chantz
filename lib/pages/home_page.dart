@@ -17,7 +17,6 @@ class _HomePageState extends State<HomePage>
   TabController _tabController;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _tabController = TabController(length: items.length, vsync: this);
@@ -25,7 +24,6 @@ class _HomePageState extends State<HomePage>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _tabController.dispose();
   }
@@ -96,7 +94,6 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _videoController = VideoPlayerController.asset(widget.videoUrl)
@@ -110,7 +107,6 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _videoController.dispose();
   }

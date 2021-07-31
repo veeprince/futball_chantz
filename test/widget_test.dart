@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // import 'package:tik_tok_ui/main.dart';
-import 'package:tik_tok_ui/pages/root_app.dart';
+import 'package:tik_tok_ui/screens/root_app.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
