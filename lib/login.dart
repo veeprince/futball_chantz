@@ -8,6 +8,7 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:provider/provider.dart';
 import 'package:tik_tok_ui/bloc/auth_block.dart';
 import 'package:tik_tok_ui/pages/home_page.dart';
+import 'package:tik_tok_ui/pages/root_app.dart';
 
 class AuthenticationScreen extends StatefulWidget {
   @override

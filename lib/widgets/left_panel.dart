@@ -18,8 +18,9 @@ class LeftPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      //controls the position of the displays
       width: size.width * 0.8,
-      height: size.height,
+      height: size.height * 0.7,
       decoration: BoxDecoration(),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -33,11 +34,10 @@ class LeftPanel extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          // Text(
-            
-          //   caption,
-          //   style: TextStyle(color: white, fontSize: 50),
-          // ),
+          Text(
+            caption,
+            style: TextStyle(color: white, fontSize: 16),
+          ),
           SizedBox(
             height: 5,
           ),

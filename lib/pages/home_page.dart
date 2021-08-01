@@ -4,9 +4,11 @@ import 'package:tik_tok_ui/theme/colors.dart';
 import 'package:tik_tok_ui/widgets/header_home_page.dart';
 import 'package:tik_tok_ui/widgets/column_social_icon.dart';
 import 'package:tik_tok_ui/widgets/left_panel.dart';
+import 'package:tik_tok_ui/widgets/right_panel.dart';
 import 'package:tik_tok_ui/widgets/tik_tok_icons.dart';
 import 'package:video_player/video_player.dart';
 
+//controls the video outlook
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -164,10 +166,11 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
                     width: widget.size.width,
                     child: Padding(
                       padding:
+                          //controls placement of all icons/ bottons on the screen
                           const EdgeInsets.only(left: 15, top: 20, bottom: 10),
                       child: SafeArea(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             HeaderHomePage(),
                             Expanded(
@@ -175,8 +178,8 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
                               children: <Widget>[
                                 LeftPanel(
                                   size: widget.size,
-                                  name: "${widget.name}",
                                   caption: "${widget.caption}",
+                                  name: "${widget.name}",
                                   songName: "${widget.songName}",
                                 ),
                                 RightPanel(
@@ -196,52 +199,6 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
                   )
                 ],
               )),
-        ),
-      ),
-    );
-  }
-}
-
-class RightPanel extends StatelessWidget {
-  final String likes;
-  final String comments;
-  final String shares;
-  final String profileImg;
-  final String albumImg;
-  const RightPanel({
-    Key key,
-    @required this.size,
-    this.likes,
-    this.comments,
-    this.shares,
-    this.profileImg,
-    this.albumImg,
-  }) : super(key: key);
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        height: size.height,
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: size.height * 0.3,
-            ),
-            Expanded(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                getProfile(profileImg),
-                getIcons(TikTokIcons.heart, likes, 35.0),
-                getIcons(TikTokIcons.chat_bubble, comments, 35.0),
-                getIcons(TikTokIcons.reply, shares, 25.0),
-                getAlbum(albumImg)
-              ],
-            ))
-          ],
         ),
       ),
     );

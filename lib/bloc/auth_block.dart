@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:tik_tok_ui/services/database_service.dart';
 
 class AuthService {
   final _auth = FirebaseAuth.instance;
@@ -26,7 +27,9 @@ class AuthBloc {
 
       //Firebase Sign in
       final result = await authService.signInWithCredential(credential);
-
+      await DatabaseService(uid: result.user.email)
+          .updateUserData('0', 'new crew', 100);
+      print(result.user.uid);
       print('${result.user.displayName}');
     } catch (error) {
       print(error);

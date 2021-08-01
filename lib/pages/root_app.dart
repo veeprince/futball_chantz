@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tik_tok_ui/pages/discover_page.dart';
 import 'package:tik_tok_ui/pages/home_page.dart';
+import 'package:tik_tok_ui/pages/message_page.dart';
+import 'package:tik_tok_ui/pages/profile_page.dart';
 import 'package:tik_tok_ui/theme/colors.dart';
 import 'package:tik_tok_ui/widgets/tik_tok_icons.dart';
 import 'package:tik_tok_ui/widgets/upload_icon.dart';
@@ -11,57 +14,100 @@ class RootApp extends StatefulWidget {
 
 class _RootAppState extends State<RootApp> {
   int pageIndex = 0;
+  final _pageOptions = [
+    HomePage(),
+    DiscoverPage(),
+    MessagePage(),
+    ProfilePage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: getBody(),
-      bottomNavigationBar: getFooter(),
+      body: _pageOptions[pageIndex],
+      bottomNavigationBar: new Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.black,
+          primaryColor: Colors.blue,
+        ),
+        child: new BottomNavigationBar(
+          selectedItemColor: Colors.red,
+          // fixedColor: Colors.black,
+          backgroundColor: Colors.black,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                color: black,
+                size: 40,
+              ),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: "Discover",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.message_outlined),
+              label: "Inbox",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_off_outlined),
+              label: "Profile",
+            ),
+          ],
+          onTap: (index) {
+            setState(() {
+              pageIndex = index;
+            });
+          },
+        ),
+      ),
     );
   }
 
   Widget getBody() {
-    return IndexedStack(
-      index: pageIndex,
-      children: <Widget>[
-        HomePage(),
-        Center(
-          //Everything needed in the discover page
+    // return Scaffold(
 
-          // child: IconButton(
-          //   icon: Icon(Icons.expand),
-          //   onPressed: () {
-          //     print('This is the discover page');
-          //   },
-          // ),
-          child: Text(
-            "Discover",
-            style: TextStyle(
-                color: black, fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Center(
-          child: Text(
-            "Upload",
-            style: TextStyle(
-                color: black, fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Center(
-          child: Text(
-            "All Activity",
-            style: TextStyle(
-                color: black, fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
-        Center(
-          child: Text(
-            "Profile",
-            style: TextStyle(
-                color: black, fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        )
-      ],
-    );
+    // );
+    // children: <Widget>[
+    //   HomePage(),
+    //   Center(
+    //     //Everything needed in the discover page
+
+    //     // child: IconButton(
+    //     //   icon: Icon(Icons.expand),
+    //     //   onPressed: () {
+    //     //     print('This is the discover page');
+    //     //   },
+    //     // ),
+    //     child: Text(
+    //       "Discover",
+    //       style: TextStyle(
+    //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
+    //     ),
+    //   ),
+    //   Center(
+    //     child: Text(
+    //       "Upload",
+    //       style: TextStyle(
+    //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
+    //     ),
+    //   ),
+    //   Center(
+    //     child: Text(
+    //       "All Activity",
+    //       style: TextStyle(
+    //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
+    //     ),
+    //   ),
+    //   Center(
+    //     child: Text(
+    //       "Profile",
+    //       style: TextStyle(
+    //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
+    //     ),
+    //   )
+    // ],
   }
 
   Widget getFooter() {
@@ -86,6 +132,18 @@ class _RootAppState extends State<RootApp> {
             return bottomItems[index]['isIcon']
                 ? InkWell(
                     onTap: () {
+                      switch (index) {
+                        case 4:
+                          {
+                            // Navigator.of(context).pushReplacement(
+                            //     MaterialPageRoute(
+
+                            //         builder: (context) => ProfilePage()));
+                          }
+
+                          break;
+                        default:
+                      }
                       selectedTab(index);
                     },
                     child: Column(
@@ -98,18 +156,18 @@ class _RootAppState extends State<RootApp> {
                         SizedBox(
                           height: 5,
                         ),
-                        Center(
-                          child: Text(
-                            bottomItems[index]['label'],
-                            style: TextStyle(color: white, fontSize: 10),
-                          ),
-                        )
+                        // Center(
+                        //   child: Text(
+                        //     bottomItems[index]['label'],
+                        //     style: TextStyle(color: white, fontSize: 10),
+                        //   ),
+                        // )
                       ],
                     ),
                   )
                 : InkWell(
                     onTap: () {
-                      selectedTab(index);
+                      print(selectedTab(index));
                     },
                     child: UploadIcon());
           }),
