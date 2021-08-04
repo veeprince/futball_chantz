@@ -55,8 +55,15 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 height: 5,
               ),
               SignInButton(
-                Buttons.Apple,
-                onPressed: () => authBloc.loginGoogle(),
+                Buttons.FacebookNew,
+                onPressed: () => authBloc.loginFacebook(),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              SignInButton(
+                Buttons.AppleDark,
+                // onPressed: () => authBloc.loginApple(),
               ),
             ],
           ),
