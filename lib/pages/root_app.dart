@@ -26,11 +26,13 @@ class _RootAppState extends State<RootApp> {
       body: _pageOptions[pageIndex],
       bottomNavigationBar: new Theme(
         data: Theme.of(context).copyWith(
-          canvasColor: Colors.black,
+          canvasColor: Colors.white,
           primaryColor: Colors.blue,
         ),
         child: new BottomNavigationBar(
-          selectedItemColor: Colors.red,
+          currentIndex: pageIndex,
+          showSelectedLabels: true,
+          selectedItemColor: Colors.black,
           // fixedColor: Colors.black,
           backgroundColor: Colors.black,
           items: [
@@ -43,15 +45,27 @@ class _RootAppState extends State<RootApp> {
               label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search),
+              icon: Icon(
+                Icons.search,
+                color: black,
+                size: 40,
+              ),
               label: "Discover",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.message_outlined),
+              icon: Icon(
+                Icons.message_outlined,
+                color: black,
+                size: 40,
+              ),
               label: "Inbox",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person_off_outlined),
+              icon: Icon(
+                Icons.person_off_outlined,
+                color: black,
+                size: 40,
+              ),
               label: "Profile",
             ),
           ],
@@ -65,50 +79,50 @@ class _RootAppState extends State<RootApp> {
     );
   }
 
-  Widget getBody() {
-    // return Scaffold(
+  // Widget getBody() {
+  //   // return Scaffold(
 
-    // );
-    // children: <Widget>[
-    //   HomePage(),
-    //   Center(
-    //     //Everything needed in the discover page
+  //   // );
+  //   // children: <Widget>[
+  //   //   HomePage(),
+  //   //   Center(
+  //   //     //Everything needed in the discover page
 
-    //     // child: IconButton(
-    //     //   icon: Icon(Icons.expand),
-    //     //   onPressed: () {
-    //     //     print('This is the discover page');
-    //     //   },
-    //     // ),
-    //     child: Text(
-    //       "Discover",
-    //       style: TextStyle(
-    //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
-    //     ),
-    //   ),
-    //   Center(
-    //     child: Text(
-    //       "Upload",
-    //       style: TextStyle(
-    //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
-    //     ),
-    //   ),
-    //   Center(
-    //     child: Text(
-    //       "All Activity",
-    //       style: TextStyle(
-    //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
-    //     ),
-    //   ),
-    //   Center(
-    //     child: Text(
-    //       "Profile",
-    //       style: TextStyle(
-    //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
-    //     ),
-    //   )
-    // ],
-  }
+  //   //     // child: IconButton(
+  //   //     //   icon: Icon(Icons.expand),
+  //   //     //   onPressed: () {
+  //   //     //     print('This is the discover page');
+  //   //     //   },
+  //   //     // ),
+  //   //     child: Text(
+  //   //       "Discover",
+  //   //       style: TextStyle(
+  //   //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
+  //   //     ),
+  //   //   ),
+  //   //   Center(
+  //   //     child: Text(
+  //   //       "Upload",
+  //   //       style: TextStyle(
+  //   //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
+  //   //     ),
+  //   //   ),
+  //   //   Center(
+  //   //     child: Text(
+  //   //       "All Activity",
+  //   //       style: TextStyle(
+  //   //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
+  //   //     ),
+  //   //   ),
+  //   //   Center(
+  //   //     child: Text(
+  //   //       "Profile",
+  //   //       style: TextStyle(
+  //   //           color: black, fontSize: 20, fontWeight: FontWeight.bold),
+  //   //     ),
+  //   //   )
+  //   // ],
+  // }
 
   Widget getFooter() {
     List bottomItems = [

@@ -7,7 +7,7 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:provider/provider.dart';
 import 'package:tik_tok_ui/bloc/auth_block.dart';
-import 'package:tik_tok_ui/pages/home_page.dart';
+// import 'package:tik_tok_ui/pages/home_page.dart';
 import 'package:tik_tok_ui/pages/root_app.dart';
 
 class AuthenticationScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
     loginStateSubscription = authBloc.currentUser.listen((fbUser) {
       if (fbUser != null) {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => HomePage()));
+            MaterialPageRoute(builder: (context) => RootApp()));
       }
     });
     super.initState();
@@ -61,10 +61,10 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
               const SizedBox(
                 height: 5,
               ),
-              SignInButton(
-                Buttons.AppleDark,
-                // onPressed: () => authBloc.loginApple(),
-              ),
+              // SignInButton(
+              //   Buttons.AppleDark,
+              //   // onPressed: () => authBloc.loginApple(),
+              // ),
             ],
           ),
         ),

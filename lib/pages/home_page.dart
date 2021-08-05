@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tik_tok_ui/constant/data_json.dart';
 import 'package:tik_tok_ui/theme/colors.dart';
 import 'package:tik_tok_ui/widgets/header_home_page.dart';
-import 'package:tik_tok_ui/widgets/column_social_icon.dart';
+// import 'package:tik_tok_ui/widgets/column_social_icon.dart';
 import 'package:tik_tok_ui/widgets/left_panel.dart';
 import 'package:tik_tok_ui/widgets/right_panel.dart';
-import 'package:tik_tok_ui/widgets/tik_tok_icons.dart';
+// import 'package:tik_tok_ui/widgets/tik_tok_icons.dart';
 import 'package:video_player/video_player.dart';
 
 //controls the video outlook
@@ -19,15 +19,13 @@ class _HomePageState extends State<HomePage>
   TabController _tabController;
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
-
     _tabController = TabController(length: items.length, vsync: this);
+
+    super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _tabController.dispose();
   }
@@ -98,7 +96,6 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _videoController = VideoPlayerController.asset(widget.videoUrl)
@@ -112,7 +109,6 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _videoController.dispose();
   }

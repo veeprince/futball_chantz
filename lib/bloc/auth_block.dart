@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:tik_tok_ui/services/database_service.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
   final _auth = FirebaseAuth.instance;
@@ -18,7 +17,7 @@ class AuthBloc {
   final googleSignin = GoogleSignIn(scopes: ['email']);
 
   Stream<User> get currentUser => authService.currentUser;
-  Map _userObj = {};
+  // Map _userObj = {};
 
   loginGoogle() async {
     try {
@@ -49,7 +48,7 @@ class AuthBloc {
           fields: "name, id, email,picture.width(200)",
         );
         //Firebase Sign in
-        final FirebaseAuth _auth = FirebaseAuth.instance;
+        // final FirebaseAuth _auth = FirebaseAuth.instance;
 
         final OAuthCredential credential =
             FacebookAuthProvider.credential(result.accessToken.token);
@@ -57,7 +56,7 @@ class AuthBloc {
         // FirebaseUser is deprecated
         final User user =
             (await authService.signInWithCredential(credential)).user;
-
+        print(user.uid);
         await DatabaseService(uid: userData['id'])
             .updateUserData('0', 'new crew', 100);
       }

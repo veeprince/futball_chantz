@@ -12,10 +12,10 @@ class _DiscoverPageState extends State<DiscoverPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-      ),
-      body: Text("Discover"),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.black,
+      // ),
+      body: Center(child: Text("Discover")),
     );
   }
 }
