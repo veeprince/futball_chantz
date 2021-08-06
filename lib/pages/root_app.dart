@@ -23,13 +23,15 @@ class _RootAppState extends State<RootApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: _pageOptions[pageIndex],
       bottomNavigationBar: new Theme(
         data: Theme.of(context).copyWith(
-          canvasColor: Colors.white,
+          canvasColor: Color(0x00ffffff),
           primaryColor: Colors.blue,
         ),
         child: new BottomNavigationBar(
+          elevation: 0,
           currentIndex: pageIndex,
           showSelectedLabels: true,
           selectedItemColor: Colors.black,

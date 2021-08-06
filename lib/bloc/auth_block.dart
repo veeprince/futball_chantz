@@ -29,8 +29,8 @@ class AuthBloc {
 
       //Firebase Sign in
       final result = await authService.signInWithCredential(credential);
-      await DatabaseService(uid: result.user.email)
-          .updateUserData('0', 'new crew', 100);
+      // await DatabaseService(uid: result.user.email)
+      //     .updateUserData('0', 'new crew', 100);
       print(result.user.uid);
       print('${result.user.displayName}');
     } catch (error) {
@@ -57,8 +57,8 @@ class AuthBloc {
         final User user =
             (await authService.signInWithCredential(credential)).user;
         print(user.uid);
-        await DatabaseService(uid: userData['id'])
-            .updateUserData('0', 'new crew', 100);
+        // await DatabaseService(uid: userData['id'])
+        //     .updateUserData('0', 'new crew', 100);
       }
     } catch (error) {
       print(error);

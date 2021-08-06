@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tik_tok_ui/constant/data_json.dart';
+import 'package:tik_tok_ui/services/data.dart';
+import 'package:tik_tok_ui/services/database_service.dart';
 import 'package:tik_tok_ui/theme/colors.dart';
 import 'package:tik_tok_ui/widgets/header_home_page.dart';
 // import 'package:tik_tok_ui/widgets/column_social_icon.dart';
@@ -7,6 +10,7 @@ import 'package:tik_tok_ui/widgets/left_panel.dart';
 import 'package:tik_tok_ui/widgets/right_panel.dart';
 // import 'package:tik_tok_ui/widgets/tik_tok_icons.dart';
 import 'package:video_player/video_player.dart';
+import 'package:delayed_display/delayed_display.dart';
 
 //controls the video outlook
 class HomePage extends StatefulWidget {
@@ -16,6 +20,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
+  var videoUrl =
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
   TabController _tabController;
   @override
   void initState() {
@@ -37,25 +43,44 @@ class _HomePageState extends State<HomePage>
 
   Widget getBody() {
     var size = MediaQuery.of(context).size;
-    return RotatedBox(
-      quarterTurns: 1,
-      child: TabBarView(
-        controller: _tabController,
-        children: List.generate(items.length, (index) {
-          return VideoPlayerItem(
-            videoUrl: items[index]['videoUrl'],
-            size: size,
-            name: items[index]['name'],
-            caption: items[index]['caption'],
-            songName: items[index]['songName'],
-            profileImg: items[index]['profileImg'],
-            likes: items[index]['likes'],
-            comments: items[index]['comments'],
-            shares: items[index]['shares'],
-            albumImg: items[index]['albumImg'],
-          );
-        }),
-      ),
+    return DelayedDisplay(
+      delay: Duration(milliseconds: 1),
+      child: StreamBuilder<DocumentSnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection('Device')
+              .doc('hayanfe09@gmail.com')
+              .snapshots(),
+          builder: (context, snapshot) {
+            return RotatedBox(
+              quarterTurns: 1,
+              child: TabBarView(
+                controller: _tabController,
+                children: List.generate(items.length, (index) {
+                  if (!snapshot.hasData) {
+                    return CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text(snapshot.error.toString()));
+                  } else {
+                    return VideoPlayerItem(
+                      // videoUrl:
+                      //     "",
+                      size: size,
+                      name: snapshot.data["name"],
+                      caption: snapshot.data["caption"],
+                      songName: snapshot.data["songName"],
+                      profileImg: snapshot.data["profileImg"],
+                      likes: snapshot.data["likes"].toString(),
+                      comments: snapshot.data["comments"].toString(),
+                      shares: snapshot.data["shares"].toString(),
+                      albumImg: snapshot.data["albumImg"],
+                      //snapshot.data["videoUrl"]
+                      //items[index]['albumImg']
+                    );
+                  }
+                }),
+              ),
+            );
+          }),
     );
   }
 }
@@ -98,7 +123,7 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
   void initState() {
     super.initState();
 
-    _videoController = VideoPlayerController.asset(widget.videoUrl)
+    _videoController = VideoPlayerController.network(_HomePageState().videoUrl)
       ..initialize().then((value) {
         _videoController.play();
         setState(() {
